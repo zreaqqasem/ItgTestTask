@@ -20,6 +20,7 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
     var users = [UserInfo]()
     let refreshControl = UIRefreshControl()
     var userListViewModel =  UsersListVieModel()
+    var selectedUserName : String?
 
     
     override func viewDidLoad() {
@@ -28,6 +29,7 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
         self.usersTable.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
         logo.layer.cornerRadius = 25
         self.usersTable.dataSource = self
+        self.usersTable.delegate = self
         self.usersTable.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "USERCELL")
         self.usersTable.refreshControl = refreshControl
         checkData()
@@ -35,6 +37,8 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
         super.viewDidLoad()
         
     }
+    
+
     
     /*this function when refresh a table view switch case because the api (since =)
     is not work as sequence in this cases after i test it on postman */
@@ -64,7 +68,8 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
      otherwise bring these data to the model view then fetch it to the  table view
  
     */
-    func checkData () {
+  private  func checkData () {
+    
         let request : NSFetchRequest<UserInfo> = UserInfo.fetchRequest()
 
         do {
@@ -76,7 +81,7 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
                 
                 do {
                     try users =  context.fetch(request)
-                    self.page = users.count
+                    self.page = users.count //to staart after uploaded data
                     self.userListViewModel.usersListViewModel = users.map({ user in
                         let id = Int(user.id)
                         let login = user.login!
@@ -150,8 +155,13 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
                 }
 
             case .failure(let error):
-                print (error.localizedDescription)
-            
+                DispatchQueue.main.async {
+                    self.loader.isHidden = true
+                    self.refreshControl.endRefreshing()
+                    onFetchFailed(with: error.localizedDescription)
+                    
+                }
+
             }
         })
     }
@@ -177,6 +187,14 @@ extension FirstScreenViewController:  UITableViewDataSource, UITableViewDelegate
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.usersTable.deselectRow(at: indexPath, animated: true)
+        self.selectedUserName = userListViewModel.userViewModel(at: indexPath.row).name
+        performSegue(withIdentifier: "GOPROFILE", sender: self)
+        
+            }
+
 }
 
 //MARK:core data functions save and get
@@ -197,4 +215,29 @@ extension FirstScreenViewController {
     }
     
 }
+
+//MARK:connection handling & navigation
+
+extension FirstScreenViewController{
+    
+    func onFetchFailed (with message: String) {
+        
+        let title = "Error"
+        let action = UIAlertAction(title: "OK", style: .default)
+        displayAlert(with: title, message: message, actions: [action])
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if (segue.identifier == "GOPROFILE") {
+               let vc = segue.destination as! SecondScreenViewController
+            print (self.selectedUserName!)
+            vc.userId = self.selectedUserName!
+              
+           }
+       }
+    
+
+}
+
 
