@@ -6,3 +6,45 @@
 //
 
 import Foundation
+
+
+
+class UsersListVieModel {
+    
+    var usersListViewModel :[UserViewModel]
+    
+    init() {
+        self.usersListViewModel = [UserViewModel]()
+    }
+}
+
+extension UsersListVieModel {
+    
+    func userViewModel (at Index : Int) -> UserViewModel{
+        
+        return self.usersListViewModel[Index]
+    }
+    
+}
+
+
+struct UserViewModel {
+    
+    let user:User
+    
+}
+
+extension UserViewModel {
+    
+    var id : Int {
+        
+        return self.user.id
+    }
+    
+    var name :String {
+        return self.user.login
+    }
+    
+}
+
+

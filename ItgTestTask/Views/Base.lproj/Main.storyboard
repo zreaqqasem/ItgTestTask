@@ -35,22 +35,32 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="7z2-uO-eYW"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="uKF-cO-BzW"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="wCQ-eN-D0w">
+                                <rect key="frame" x="192" y="433" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6JR-fQ-hIj"/>
+                                    <constraint firstAttribute="width" constant="30" id="h4T-yx-OT1"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uEi-aY-WLE" firstAttribute="top" secondItem="EIW-Er-XSg" secondAttribute="bottom" constant="8" id="0ew-9t-QxP"/>
+                            <constraint firstItem="wCQ-eN-D0w" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1ly-iF-G7a"/>
                             <constraint firstItem="EIW-Er-XSg" firstAttribute="top" secondItem="qBg-Y9-PcF" secondAttribute="bottom" constant="40" id="3hP-a5-vMm"/>
                             <constraint firstItem="uEi-aY-WLE" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="M6s-s7-X8v"/>
                             <constraint firstItem="EIW-Er-XSg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XTv-pJ-PnR"/>
                             <constraint firstItem="uEi-aY-WLE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YiN-Tm-RkH"/>
                             <constraint firstItem="qBg-Y9-PcF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="ddi-Gm-ClJ"/>
+                            <constraint firstItem="wCQ-eN-D0w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i0L-Fm-RSh"/>
                             <constraint firstItem="qBg-Y9-PcF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="pQT-9g-Mf8"/>
                             <constraint firstItem="uEi-aY-WLE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vy4-Ik-vZl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Page" id="gbT-Cs-ulp"/>
                     <connections>
+                        <outlet property="loader" destination="wCQ-eN-D0w" id="Bvz-1P-p7n"/>
                         <outlet property="logo" destination="EIW-Er-XSg" id="oVd-JH-s7T"/>
                         <outlet property="usersTable" destination="uEi-aY-WLE" id="WA3-np-OTC"/>
                         <segue destination="KbI-bq-PdU" kind="show" identifier="GOPROFILE" id="qNg-bl-nXA"/>

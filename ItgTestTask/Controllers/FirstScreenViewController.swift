@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 import CoreData
 
-class FirstScreenViewController : UIViewController {
+class FirstScreenViewController : UIViewController, AlertDisplayer {
+    @IBOutlet var loader: UIActivityIndicatorView!
     var page = 0
     @IBOutlet var usersTable: UITableView!
     @IBOutlet var logo: UIImageView!
@@ -18,6 +19,7 @@ class FirstScreenViewController : UIViewController {
     var count :Int?
     var users = [UserInfo]()
     let refreshControl = UIRefreshControl()
+    var userListViewModel =  UsersListVieModel()
 
     
     override func viewDidLoad() {
@@ -29,9 +31,13 @@ class FirstScreenViewController : UIViewController {
         self.usersTable.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "USERCELL")
         self.usersTable.refreshControl = refreshControl
         checkData()
+        loader.startAnimating()
         super.viewDidLoad()
         
     }
+    
+    /*this function when refresh a table view switch case because the api (since =)
+    is not work as sequence in this cases after i test it on postman */
     
     @objc func refresh(_ sender: AnyObject) {
        
@@ -47,7 +53,17 @@ class FirstScreenViewController : UIViewController {
         }
         populateUsers(page:page)
     }
-
+    
+    
+    /* this function to check if there's an uploaded data do core data from the previous calls
+    
+     it's work flow as follow :
+     
+     first check if the count of users in core data empy or not
+     if there's no data so call the api bring data from it
+     otherwise bring these data to the model view then fetch it to the  table view
+ 
+    */
     func checkData () {
         let request : NSFetchRequest<UserInfo> = UserInfo.fetchRequest()
 
@@ -59,11 +75,20 @@ class FirstScreenViewController : UIViewController {
             } else {
                 
                 do {
-                try users =  context.fetch(request)
-                    self.users.sort(by: {$0.id<$1.id})
-                    self.users.reverse()
+                    try users =  context.fetch(request)
+                    self.page = users.count
+                    self.userListViewModel.usersListViewModel = users.map({ user in
+                        let id = Int(user.id)
+                        let login = user.login!
+                        return UserViewModel.init(user: User(login: login, id: id))
+
+                    })
+                    self.userListViewModel.usersListViewModel.sort(by: {$0.id<$1.id})
+                    self.userListViewModel.usersListViewModel.reverse()
                     self.usersTable.reloadData()
+                    self.loader.isHidden = true
                     self.usersTable.setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: false)
+                    
 
                 }
                 catch {
@@ -75,6 +100,14 @@ class FirstScreenViewController : UIViewController {
             print(error.localizedDescription)
         }
     }
+    
+    
+    /*
+     
+     this function for fetching data from api
+     i just make api service call api fetch this data into core data and modelview.
+     
+     */
     
     private func populateUsers(page:Int){
        
@@ -96,11 +129,12 @@ class FirstScreenViewController : UIViewController {
                     self.users.append(user1)
                     saveUsers()
                 }
-                
-                self.users.sort(by: {$0.id<$1.id})
-                self.users.reverse()
+                self.userListViewModel.usersListViewModel = self.userListViewModel.usersListViewModel + users.map(UserViewModel.init)
+                self.userListViewModel.usersListViewModel.sort(by: {$0.id<$1.id})
+                self.userListViewModel.usersListViewModel.reverse()
                 
                 if page == 0 {
+                    self.loader.isHidden = true
                     self.usersTable.reloadData()
                     self.usersTable.setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: false)
                     self.refreshControl.endRefreshing()
@@ -130,14 +164,15 @@ class FirstScreenViewController : UIViewController {
 extension FirstScreenViewController:  UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return users.count
+        return self.userListViewModel.usersListViewModel.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
+        let vm = self.userListViewModel.userViewModel(at: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "USERCELL", for: indexPath) as! UserCell
-        cell.userName.text = users[indexPath.row].login
+        cell.userName.text = vm.name
         return cell
         
     }
