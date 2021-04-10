@@ -89,7 +89,13 @@ class SecondScreenViewController: UIViewController, AlertDisplayer {
         let title = "Error"
         let action = UIAlertAction(title: "OK", style: .default)
         displayAlert(with: title, message: message, actions: [action])
-        
+        DispatchQueue.main.async {
+            
+            self.loader.isHidden = true
+            self.loadingView.isHidden = true
+
+        }
+
     }
 }
 
