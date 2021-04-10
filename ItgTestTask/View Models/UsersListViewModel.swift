@@ -9,7 +9,11 @@ import Foundation
 
 
 
-class UsersListVieModel {
+class UsersListVieModel:Equatable {
+    static func == (lhs: UsersListVieModel, rhs: UsersListVieModel) -> Bool {
+        return true
+    }
+    
     
     var usersListViewModel :[UserViewModel]
     
@@ -28,7 +32,11 @@ extension UsersListVieModel {
 }
 
 
-struct UserViewModel {
+struct UserViewModel: Equatable {
+    static func == (lhs: UserViewModel, rhs: UserViewModel) -> Bool {
+        return true
+    }
+    
     
     let user:User
     
