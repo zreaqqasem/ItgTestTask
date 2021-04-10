@@ -144,15 +144,14 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
                 
                 if page == 0 {
                     self.loader.isHidden = true
+                    self.refreshControl.endRefreshing()
                     self.usersTable.reloadData()
                     self.usersTable.setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: false)
-                    self.refreshControl.endRefreshing()
 
                 }
                 else {
-                    self.usersTable.reloadData()
                     self.refreshControl.endRefreshing()
-                    print(self.users.count)
+                    self.usersTable.reloadData()
                     let selectedIndex = IndexPath(row: 30, section: 0)
                     self.usersTable.scrollToRow(at: selectedIndex, at: .top, animated: false)
 
