@@ -17,17 +17,18 @@ extension UserProfileViewModel {
     
     var name : String {
         
-        return self.user?.login ?? "No Name"
+        return self.user?.login ?? NSLocalizedString("No_Name", comment: "")
+
     }
     
     var location : String {
         
-        return self.user?.location ?? "No Location Found"
+        return self.user?.location ?? NSLocalizedString("No_Location", comment: "")
     }
     
     var bio :String {
         
-        return self.user?.bio ?? "No Bio Found"
+        return self.user?.bio ?? NSLocalizedString("No_Bio", comment: "")
     }
     
     var imageUrl : String {

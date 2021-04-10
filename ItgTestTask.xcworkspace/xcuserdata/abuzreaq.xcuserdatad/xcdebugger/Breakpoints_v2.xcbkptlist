@@ -228,7 +228,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "0E95DB65-611A-4565-8DD9-466732239785 - a3989980ca55fd48"
+                  uuid = "0E95DB65-611A-4565-8DD9-466732239785 - a3989980ca55fda9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -238,12 +238,12 @@
                   urlString = "file:///Users/abuzreaq/Desktop/swift_practicing/ItgTestTask/ItgTestTask/Controllers/FirstScreenViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
                   offsetFromSymbolStart = "36">
                </Location>
                <Location
-                  uuid = "0E95DB65-611A-4565-8DD9-466732239785 - a3989980ca55fd48"
+                  uuid = "0E95DB65-611A-4565-8DD9-466732239785 - a3989980ca55fda9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -253,12 +253,12 @@
                   urlString = "file:///Users/abuzreaq/Desktop/swift_practicing/ItgTestTask/ItgTestTask/Controllers/FirstScreenViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
                   offsetFromSymbolStart = "76">
                </Location>
                <Location
-                  uuid = "0E95DB65-611A-4565-8DD9-466732239785 - a3989980ca55fd48"
+                  uuid = "0E95DB65-611A-4565-8DD9-466732239785 - a3989980ca55fda9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -268,12 +268,12 @@
                   urlString = "file:///Users/abuzreaq/Desktop/swift_practicing/ItgTestTask/ItgTestTask/Controllers/FirstScreenViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
                   offsetFromSymbolStart = "220">
                </Location>
                <Location
-                  uuid = "0E95DB65-611A-4565-8DD9-466732239785 - a3989980ca55fd48"
+                  uuid = "0E95DB65-611A-4565-8DD9-466732239785 - a3989980ca55fda9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -283,8 +283,8 @@
                   urlString = "file:///Users/abuzreaq/Desktop/swift_practicing/ItgTestTask/ItgTestTask/Controllers/FirstScreenViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
                   offsetFromSymbolStart = "284">
                </Location>
             </Locations>
