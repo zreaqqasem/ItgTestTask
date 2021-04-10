@@ -19,6 +19,7 @@ class SecondScreenViewController: UIViewController, AlertDisplayer {
     var userId : String?
     var profileModel  = UserProfileViewModel()
     override func viewDidLoad() {
+        self.title = NSLocalizedString("Profile_Page", comment: "")
         avatarImage.layer.masksToBounds = true
         avatarImage.layer.cornerRadius = avatarImage.bounds.width / 2
         coveerImage.layer.cornerRadius = 15
@@ -62,13 +63,12 @@ class SecondScreenViewController: UIViewController, AlertDisplayer {
            URLSession.shared.dataTask(with: url) { (data, response, error) in
                       // Handle Error
                       if let error = error {
-                          print("DataTask error: \(error.localizedDescription)")
+                        self.onFetchFailed(with: error.localizedDescription)
                           return
                       }
                       
                       guard let data = data else {
-                          // Handle Empty Data
-                          print("Empty Data")
+                        self.onFetchFailed(with: "no profile image")
                           return
                       }
                       

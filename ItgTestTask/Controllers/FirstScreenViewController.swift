@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class FirstScreenViewController : UIViewController, AlertDisplayer {
+    @IBOutlet var tittle: UILabel!
     @IBOutlet var loader: UIActivityIndicatorView!
     var page = 0
     @IBOutlet var usersTable: UITableView!
@@ -24,7 +25,9 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
 
     
     override func viewDidLoad() {
-        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        
+        tittle.text = NSLocalizedString("Title_String", comment: "")
+        self.title = NSLocalizedString("Home_Page", comment: "")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         self.usersTable.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
         logo.layer.cornerRadius = 25
@@ -37,8 +40,6 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
         super.viewDidLoad()
         
     }
-    
-
     
     /*this function when refresh a table view switch case because the api (since =)
     is not work as sequence in this cases after i test it on postman */
@@ -58,12 +59,11 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
         populateUsers(page:page)
     }
     
-    
     /* this function to check if there's an uploaded data do core data from the previous calls
-    
      it's work flow as follow :
      
      first check if the count of users in core data empy or not
+     if not fetch these data and make the second api call start from it by set page the data count.
      if there's no data so call the api bring data from it
      otherwise bring these data to the model view then fetch it to the  table view
  
@@ -105,12 +105,16 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
             print(error.localizedDescription)
         }
     }
-    
-    
     /*
      
      this function for fetching data from api
      i just make api service call api fetch this data into core data and modelview.
+     i implement the pagination in my own way and what i did :
+     my table view and it's content is flip upside down
+     when fethcing data into array i reverse this array to work well as i want to make pagination and
+     refresh table view from bottom>
+     after finish fetching data into table view i scrol to row 30 because my data comes 30 30.
+     so new data comes below the last cell as user experince like instgram and so on.
      
      */
     
@@ -172,6 +176,7 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
 //MARK:Table View Delegates & DataSource
 
 extension FirstScreenViewController:  UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.userListViewModel.usersListViewModel.count
@@ -183,13 +188,16 @@ extension FirstScreenViewController:  UITableViewDataSource, UITableViewDelegate
         let vm = self.userListViewModel.userViewModel(at: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "USERCELL", for: indexPath) as! UserCell
         cell.userName.text = vm.name
+        cell.transform = CGAffineTransform(scaleX: 1.0, y: -1.0)
+        cell.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
+
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.usersTable.deselectRow(at: indexPath, animated: true)
+        self.usersTable.deselectRow(at: indexPath, animated: false)
         self.selectedUserName = userListViewModel.userViewModel(at: indexPath.row).name
         performSegue(withIdentifier: "GOPROFILE", sender: self)
         

@@ -11,8 +11,7 @@ class UserCell: UITableViewCell {
     @IBOutlet var userName: UILabel!
     
     override func awakeFromNib() {
-        self.transform  =   CGAffineTransform(scaleX: -1, y: 1);
-        self.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
+        print()
         super.awakeFromNib()
         // Initialization code
     }

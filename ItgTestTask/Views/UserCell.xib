@@ -9,42 +9,49 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="USERCELL" rowHeight="122" id="KGk-i7-Jjw" customClass="UserCell" customModule="ItgTestTask" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="USERCELL" rowHeight="122" id="3Jx-jM-Rrk" customClass="UserCell" customModule="ItgTestTask" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="UserCell" customModule="ItgTestTask" customModuleProvider="target">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Jx-jM-Rrk" id="cdM-wL-art" customClass="UserCell" customModule="ItgTestTask" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="293" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ccx-4b-lrf">
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O5v-bb-1BZ">
                         <rect key="frame" x="10" y="10" width="273" height="102"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gitHubLogo" translatesAutoresizingMaskIntoConstraints="NO" id="8LX-pV-Na8">
-                                <rect key="frame" x="0.0" y="11" width="80" height="80"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gitHubLogo" translatesAutoresizingMaskIntoConstraints="NO" id="nyo-Hj-otB">
+                                <rect key="frame" x="8" y="11" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Ry6-6k-PlH"/>
-                                    <constraint firstAttribute="width" constant="80" id="o1u-AG-igm"/>
+                                    <constraint firstAttribute="height" constant="80" id="PDO-L4-Rq9"/>
+                                    <constraint firstAttribute="width" constant="80" id="spb-Jw-5bF"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qasem Zreaq" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ova-9i-dJL">
-                                <rect key="frame" x="170" y="41" width="103" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qasem Zreaq" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tN-Q8-oa3">
+                                <rect key="frame" x="97" y="41" width="168" height="20.5"/>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="5tN-Q8-oa3" firstAttribute="width" secondItem="nyo-Hj-otB" secondAttribute="width" multiplier="2.1" id="l0m-lr-NMi"/>
+                        </constraints>
+                        <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Ccx-4b-lrf" secondAttribute="trailing" constant="10" id="RkO-16-9Ln"/>
-                    <constraint firstAttribute="bottom" secondItem="Ccx-4b-lrf" secondAttribute="bottom" constant="10" id="cA3-D7-sAm"/>
-                    <constraint firstItem="Ccx-4b-lrf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="dWW-je-q6p"/>
-                    <constraint firstItem="Ccx-4b-lrf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="eoR-0k-JZZ"/>
+                    <constraint firstAttribute="trailing" secondItem="O5v-bb-1BZ" secondAttribute="trailing" constant="10" id="68J-Sc-APK"/>
+                    <constraint firstAttribute="bottom" secondItem="O5v-bb-1BZ" secondAttribute="bottom" constant="10" id="EK1-dT-XCC"/>
+                    <constraint firstItem="O5v-bb-1BZ" firstAttribute="top" secondItem="cdM-wL-art" secondAttribute="top" constant="10" id="RSr-0c-f5m"/>
+                    <constraint firstItem="O5v-bb-1BZ" firstAttribute="leading" secondItem="cdM-wL-art" secondAttribute="leading" constant="10" id="rP9-n7-9by"/>
                 </constraints>
+                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <viewLayoutGuide key="safeArea" id="GUy-jg-vFT"/>
+            <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
             <connections>
-                <outlet property="userName" destination="Ova-9i-dJL" id="Gy5-yl-0fT"/>
+                <outlet property="userName" destination="5tN-Q8-oa3" id="cyK-3h-V2A"/>
             </connections>
             <point key="canvasLocation" x="-43.478260869565219" y="154.6875"/>
         </tableViewCell>
