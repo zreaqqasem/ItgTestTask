@@ -8,12 +8,21 @@
 import UIKit
 
 class UserCell: UITableViewCell {
+    
+    @IBOutlet var profileImage: UIImageView!
+    var userImage: String?
     @IBOutlet var userName: UILabel!
+    var url : URL?
     
     override func awakeFromNib() {
-        print()
         super.awakeFromNib()
-        // Initialization code
+        
+
+
+    }
+    override func prepareForReuse() {
+        
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -21,5 +30,8 @@ class UserCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+   
+    
+
     
 }

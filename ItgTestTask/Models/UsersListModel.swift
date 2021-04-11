@@ -20,6 +20,7 @@ struct User: Codable {
 enum TypeEnum: String, Codable {
     case organization = "Organization"
     case user = "User"
+    
 }
 typealias Users = [User]
 

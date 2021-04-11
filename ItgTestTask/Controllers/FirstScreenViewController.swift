@@ -51,7 +51,7 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
             page += 46
         case 46:
             page = 91
-        case 96:
+        case 91:
             page = 125
         default:
             page += 31
@@ -139,7 +139,7 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
                     saveUsers()
                 }
                 self.userListViewModel.usersListViewModel = self.userListViewModel.usersListViewModel + users.map(UserViewModel.init)
-                self.userListViewModel.usersListViewModel.sort(by: {$0.id<$1.id})
+                 self.userListViewModel.usersListViewModel.sort(by: {$0.id<$1.id})
                 self.userListViewModel.usersListViewModel.reverse()
                 
                 if page == 0 {
@@ -152,7 +152,7 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
                 else {
                     self.refreshControl.endRefreshing()
                     self.usersTable.reloadData()
-                    let selectedIndex = IndexPath(row: 30, section: 0)
+                    let selectedIndex = IndexPath(row: 29, section: 0)
                     self.usersTable.scrollToRow(at: selectedIndex, at: .top, animated: false)
 
                 }
@@ -164,11 +164,9 @@ class FirstScreenViewController : UIViewController, AlertDisplayer {
                     onFetchFailed(with: error.localizedDescription)
                     
                 }
-
             }
         })
-    }
-    
+    }    
         
 }
 

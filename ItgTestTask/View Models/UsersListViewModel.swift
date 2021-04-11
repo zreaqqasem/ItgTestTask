@@ -52,7 +52,7 @@ extension UserViewModel {
     var name :String {
         return self.user.login
     }
-    
+        
 }
 
 

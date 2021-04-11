@@ -1,15 +1,15 @@
 
 /* Class = "UILabel"; text = "Palestine"; ObjectID = "6Ff-IW-cmM"; */
-"6Ff-IW-cmM.text" = "Palestine";
+"6Ff-IW-cmM.text" = "الدولة";
 
 /* Class = "UILabel"; text = "Software Engineer"; ObjectID = "7tJ-nY-rNx"; */
-"7tJ-nY-rNx.text" = "Software Engineer";
+"7tJ-nY-rNx.text" = "الوصف";
 
 /* Class = "UILabel"; text = "Qasem Zreaq"; ObjectID = "UFD-Su-6UO"; */
 "UFD-Su-6UO.text" = "Qasem Zreaq";
 
 /* Class = "UINavigationItem"; title = "Home Page"; ObjectID = "gbT-Cs-ulp"; */
-"gbT-Cs-ulp.title" = "Home Page";
+"gbT-Cs-ulp.title" = "الصفحة الرئيسية";
 
 /* Class = "UILabel"; text = "Random GitHub Users"; ObjectID = "qBg-Y9-PcF"; */
-"qBg-Y9-PcF.text" = "Random GitHub Users";
+"qBg-Y9-PcF.text" = "حسابات عشوائية";

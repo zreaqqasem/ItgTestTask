@@ -51,6 +51,7 @@
             <viewLayoutGuide key="safeArea" id="GUy-jg-vFT"/>
             <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
             <connections>
+                <outlet property="profileImage" destination="nyo-Hj-otB" id="BX1-wg-eT8"/>
                 <outlet property="userName" destination="5tN-Q8-oa3" id="cyK-3h-V2A"/>
             </connections>
             <point key="canvasLocation" x="-43.478260869565219" y="154.6875"/>
