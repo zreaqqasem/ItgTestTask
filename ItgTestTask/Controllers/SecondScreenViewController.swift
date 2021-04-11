@@ -44,10 +44,7 @@ class SecondScreenViewController: UIViewController, AlertDisplayer {
                 case .success(let user):
                     DispatchQueue.main.async {
                         self?.profileModel.user = user
-                        self?.userName.text = self?.profileModel.name
-                        self?.country.text = self?.profileModel.location
-                        self?.bio.text = self?.profileModel.bio
-                        self?.getImage(url: URL(string: (self?.profileModel.imageUrl)!)!)
+                        self?.setupUi()
                     }
                     print(user)
     
@@ -55,11 +52,18 @@ class SecondScreenViewController: UIViewController, AlertDisplayer {
                     self?.onFetchFailed (with :error.localizedDescription)
             }
         }
-        
+    }
+    
+    private func setupUi(){
+        userName.text = profileModel.name
+        country.text = profileModel.location
+        bio.text = profileModel.bio
+        getImage(url: URL(string: (profileModel.imageUrl))!)
+
     }
     
     private func getImage(url: URL){
-           
+        
            URLSession.shared.dataTask(with: url) { (data, response, error) in
                       // Handle Error
                       if let error = error {
@@ -73,7 +77,7 @@ class SecondScreenViewController: UIViewController, AlertDisplayer {
                       }
                       
                       DispatchQueue.main.async {
-                          if let image = UIImage(data: data) {
+                           if let image = UIImage(data: data) {
                             self.avatarImage.image = image
                             self.loader.isHidden = true
                             self.loadingView.isHidden = true
